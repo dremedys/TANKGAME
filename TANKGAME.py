@@ -55,12 +55,12 @@ class Tank:
                 if self.x + self.width < 0:
                     self.x = 1200 
                 else:
-                    self.x - = self.speed
+                    self.x-=self.speed
             if self.direction == Direction.RIGHT:
                 if self.x> 1200:
                     self.x = 0
                 else:
-                    self.x + = self.speed
+                    self.x += self.speed
             if self.direction == Direction.UP:
                 if self.y<0-self.width:
                     self.y=600
@@ -70,7 +70,7 @@ class Tank:
                 if self.y > 600:
                     self.y = 0-self.width
                 else:
-                    self.y + = self.speed
+                    self.y += self.speed
             self.draw()
     def chances(self):
         font = pygame.font.SysFont("Calibri", 30)
@@ -93,8 +93,8 @@ class Bullet:
         pygame.draw.circle(screen, self.color,(self.x,self.y),self.radius)
     def start(self,x,y):
         if self.drop==True:
-            self.x+ =self.dx
-            self.y+ =self.dy
+            self.x+=self.dx
+            self.y+=self.dy
             self.draw()
     def shoot(self,Tank):
         atu.play()
@@ -111,7 +111,7 @@ class Bullet:
             self.x,self.y=Tank.x + int(Tank.width / 2), Tank.y + int(Tank.width / 2)
             self.dx,self.dy= 0, 15
     def out(self): #for bullets that are already out of walls
-        if self.x >=1200 or self.x <=0 or self.y> =600 or self.y <=0:
+        if self.x >=1200 or self.x <=0 or self.y>=600 or self.y <=0:
             return True
         return False
     def colission(self,Tank):  #checking if tank bullet colission
@@ -161,7 +161,7 @@ while mainloop:
         bullet1.x, bullet1.y = tank1.x + int(tank1.width / 2), tank1.y + int(tank1.width / 2)
     if bullet2.colission(tank1)==True:
         utu.play()
-        tank1.lives- = 1
+        tank1.lives-= 1
         bullet2.drop=False
         bullet2.x, bullet2.y=tank2.x + int(tank2.width / 2), tank2.y + int(tank2.width / 2)
     for bullet in bullets:
